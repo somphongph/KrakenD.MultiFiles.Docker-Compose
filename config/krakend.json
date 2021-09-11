@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "name": "KrakenD Example",
+  "port": 8080,
+  "timeout": "3000ms",
+  "cache_ttl": "300s",
+  "extra_config":{},
+  "endpoints": [
+    {{ template "authors.tmpl" . }},
+    {{ template "books.tmpl" . }}
+  ]
+}

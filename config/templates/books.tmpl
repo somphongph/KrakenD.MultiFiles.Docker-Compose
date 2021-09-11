@@ -1,0 +1,34 @@
+{
+  "method": "GET",
+  "endpoint": "/api/v1/books",
+  "output_encoding": "no-op",
+  "headers_to_pass": {{ marshal .header.headers_to_pass }},
+  "extra_config": {},
+  "backend": [
+    {
+      "url_pattern": "/v1/books",
+      "host": [ "{{ env "API_BOOKS" }}" ],
+      "encoding": "no-op",
+      "extra_config": {
+        {{ include "rate_limit_backend.tmpl" }}
+      }
+    }
+  ]
+},
+{
+  "method": "POST",
+  "endpoint": "/api/v1/books",
+  "output_encoding": "no-op",
+  "headers_to_pass": {{ marshal .header.headers_to_pass }},
+  "extra_config": {},
+  "backend": [
+    {
+      "url_pattern": "/v1/books",
+      "host": [ "{{ env "API_BOOKS" }}" ],
+      "encoding": "no-op",
+      "extra_config": {
+        {{ include "rate_limit_backend.tmpl" }}
+      }
+    }
+  ]
+}
